@@ -10,7 +10,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class TicketEnquiryService {
     private final JdbcTemplate jdbctemplateForTicketEq;
-    public Map<String, Object> TicketDetails(Integer ticket_no) {
+    public Map<String, Object> ticketDetails(Integer ticket_no) {
         return jdbctemplateForTicketEq.queryForMap("select * from ticket where ticket_no=?", ticket_no);
     }
 

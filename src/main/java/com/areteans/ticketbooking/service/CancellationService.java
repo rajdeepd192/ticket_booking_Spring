@@ -11,10 +11,10 @@ import java.util.Map;
 public class CancellationService {
     private final JdbcTemplate jdbcTemplateForCancellation;
 
-    public  void CancelTicket(Integer ticket_no) {
+    public  void cancelticket(Integer ticket_no) {
          jdbcTemplateForCancellation.update("Delete from ticket where ticket_no=?", ticket_no);
     }
-    public void  CancelPassenger(Integer passenger_id) {
+    public void cancelpassenger(Integer passenger_id) {
          jdbcTemplateForCancellation.update("Delete from passengers where passenger_id=?", passenger_id);
     }
 

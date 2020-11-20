@@ -10,7 +10,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class TrainEnquiryService {
     private final JdbcTemplate jdbctemplateForTrainEq;
-    public Map<String, Object> TrainDetails(String start_city, String end_city) {
+    public Map<String, Object> trainDetails(String start_city, String end_city) {
         return jdbctemplateForTrainEq.queryForMap("select * from train where start_city=? and end_city=?", start_city,end_city);
     }
 

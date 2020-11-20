@@ -10,7 +10,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class PassengerEnquiryService {
     public final JdbcTemplate jdbcTemplateForPassengerEq;
-    public Map<String, Object> PassengerDetails(Integer passenger_id) {
+    public Map<String, Object> passengerDetails(Integer passenger_id) {
         return jdbcTemplateForPassengerEq.queryForMap("select * from passengers where passenger_id=?", passenger_id);
     }
 

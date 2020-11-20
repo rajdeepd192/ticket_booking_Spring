@@ -1,6 +1,7 @@
 package com.areteans.ticketbooking.controller;
 
 
+import com.areteans.ticketbooking.service.PassengerEnquiryService;
 import com.areteans.ticketbooking.service.TicketEnquiryService;
 import com.areteans.ticketbooking.service.TrainEnquiryService;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,7 @@ import java.util.Map;
 public class EnquiryController {
     private final TicketEnquiryService ticketEnquiryService;
     private final TrainEnquiryService trainEnquiryService;
+    private final PassengerEnquiryService passengerEnquiryService;
 
     @GetMapping(path = "ticket")
     public Map<String, Object> GetTicketDetails(@RequestParam(value = "ticket_no")Integer ticket_no){
@@ -31,6 +33,6 @@ public class EnquiryController {
     }
     @GetMapping(path = "passenger")
     public Map<String, Object> GetPassengerDetails(@RequestParam(value = "passenger_id")Integer passenger_id){
-        return this.ticketEnquiryService.TicketDetails(passenger_id);
+        return this.passengerEnquiryService.PassengerDetails(passenger_id);
     }
 }

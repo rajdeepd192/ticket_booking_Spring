@@ -1,6 +1,7 @@
 package com.areteans.ticketbooking.controller;
 
 import com.areteans.ticketbooking.service.CancellationService;
+import com.areteans.ticketbooking.service.PassengerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,8 +16,13 @@ public class CancellationController {
         cancellationService.cancelticket(ticket_no);
     }
 
-    @DeleteMapping(path = "passenger/{passenger_id}")
+    @DeleteMapping(value = "passenger/{passenger_id}")
     public void cancellationOfPassenger(@PathVariable("passenger_id")Integer passenger_id){
         cancellationService.cancelpassenger(passenger_id);
+    }
+
+    @DeleteMapping(value = "deletepassenger/{passenger_id}")
+    public void deletepassenger(@PathVariable("passenger_id") Long passenger_id){
+        cancellationService.deletePassenger(passenger_id);
     }
 }

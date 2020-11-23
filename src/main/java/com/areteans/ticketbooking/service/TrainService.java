@@ -1,5 +1,8 @@
 package com.areteans.ticketbooking.service;
 
+import com.areteans.ticketbooking.models.PassengerJPA;
+import com.areteans.ticketbooking.models.TrainJPA;
+import com.areteans.ticketbooking.repository.TrainRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -11,6 +14,7 @@ import java.util.Map;
 public class TrainService {
 
     private final JdbcTemplate jdbcTemplate;
+    private final TrainRepository trainRepository;
 
     public Map<String, Object> save(Map<String, Object> train) {
         Map<String, Object> sMap = jdbcTemplate.queryForMap("insert into train(train_no,train_name,start_city,end_city,total_seats,fare) values(?,?,?,?,?,?) RETURNING train_no",
@@ -23,6 +27,10 @@ public class TrainService {
 
         train.put("train_no" , sMap.get("train_no"));
         return train;
+    }
+
+    public TrainJPA saveTrain(TrainJPA trainJPA) {
+        return trainRepository.save(trainJPA);
     }
 }
 

@@ -1,14 +1,14 @@
 package com.areteans.ticketbooking.controller;
 
 
+import com.areteans.ticketbooking.models.PassengerJPA;
+import com.areteans.ticketbooking.models.TrainJPA;
 import com.areteans.ticketbooking.service.PassengerEnquiryService;
 import com.areteans.ticketbooking.service.TicketEnquiryService;
 import com.areteans.ticketbooking.service.TrainEnquiryService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -32,5 +32,15 @@ public class EnquiryController {
     @GetMapping(path = "passenger")
     public Map<String, Object> getPassengerDetails(@RequestParam(value = "passenger_id")Integer passenger_id){
         return this.passengerEnquiryService.passengerDetails(passenger_id);
+    }
+
+    @GetMapping(path = "passengerJpa")
+    public PassengerJPA searchPassenger(@RequestParam(value = "passenger_id")Long passenger_id) {
+        return passengerEnquiryService.getPassengerByID(passenger_id);
+    }
+
+    @GetMapping(path = "trainJpa")
+    public TrainJPA searchTrain(@RequestParam(value = "train_no")Long train_no) {
+        return trainEnquiryService.getTrainByID(train_no);
     }
 }

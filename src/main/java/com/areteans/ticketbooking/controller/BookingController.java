@@ -1,7 +1,9 @@
 package com.areteans.ticketbooking.controller;
 
 import com.areteans.ticketbooking.models.PassengerJPA;
+import com.areteans.ticketbooking.models.Ticket;
 import com.areteans.ticketbooking.models.TrainJPA;
+import com.areteans.ticketbooking.service.CommonService;
 import com.areteans.ticketbooking.service.PassengerService;
 import com.areteans.ticketbooking.service.TicketService;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +23,7 @@ public class BookingController {
     private final TrainService trainService;
     private final TicketService ticketService;
     private final PassengerService passengerService;
+    private final CommonService commonService;
 
     @PostMapping(path = "train", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Map<String, Object> createDetails(@RequestBody Map<String, Object> train) {
@@ -45,6 +48,11 @@ public class BookingController {
     @PostMapping(path = "trainJpa", consumes = MediaType.APPLICATION_JSON_VALUE)
     public TrainJPA trainData(@RequestBody TrainJPA trainJPA) {
         return trainService.saveTrain(trainJPA);
+    }
+
+    @PostMapping(path = "nestedPassTick", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Ticket createPassTick(@RequestBody Ticket ticket) {
+        return commonService.create(ticket);
     }
 }
 

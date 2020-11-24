@@ -12,6 +12,7 @@ public class Ticket {
     private String end_city;
     private String booking_date;
     private Integer train_no;
+    private Passengers passengers;
 
     public Ticket(Integer ticket_no,Integer price,String start_city,String end_city,String booking_date,Integer train_no){
         this.ticket_no=ticket_no;
@@ -20,6 +21,7 @@ public class Ticket {
         this.end_city=end_city;
         this.booking_date=booking_date;
         this.train_no=train_no;
+
     }
 
 }

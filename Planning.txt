@@ -12,10 +12,11 @@
                                 -Passenger (passenger_id,full_name,age,contact_no,start_city,end_city)
                                 -Train (start_city,end_city,fare,train_no,total_seats)
 
+                                JPA Classes:
                                 -PassengerJPA
                                 -TrainJPA
 
-                                REPOSITORY CLASSES
+                                REPOSITORY:
                                 -PassengerRepository
                                 -TrainRepository
 
@@ -26,5 +27,6 @@
                                 -PassengerService
                                 -CancellationService,UpdateService,CommonService
 
-                                -TicketEnquiryService(ticket_no) , TrainEnquiryService (start_city,end_city)
-                                -TicketCancellationService (ticket_no)
+                                -TicketEnquiryService(ticket_no) , TrainEnquiryService (start_city,end_city),
+                                 PassengerEnquiryService(passenger_id)
+

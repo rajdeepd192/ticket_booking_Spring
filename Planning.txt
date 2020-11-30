@@ -3,11 +3,37 @@
    Status Enquiry               CONTROLLER
 
                                 -BookingController
-                                -EnquiryController
-                                -UpdateController
-                                -CancellationController
+                                 endpoints- @postMappings :
+                                                            createDetails
+                                                            ticketDetails
+                                                            passengerDetails
+                                                            passengerData (using JPA)
+                                                            trainData (using JPA)
+                                                            createPassTick
+                                                            createPassenger (using JPA)
 
-                                MODELS
+
+                                -EnquiryController
+                                 endpoints- @GetMapping :
+                                                            getTicketDetails
+                                                            getTrainDetails
+                                                            getPassengerDetails
+                                                            searchPassenger (using JPA)
+                                                            searchTrain (using JPA)
+
+                                -UpdateController
+                                 endpoints- @PutMapping :
+                                                            passengerDetails
+                                                            trainDetails
+
+                                -CancellationController
+                                 endpoints- @DeleteMapping :
+                                                             cancelTicket
+                                                             cancelPassenger
+                                                             deletePassenger (using JPA)
+
+
+                                DATA MODEL:
                                 -Ticket (ticket_no,price,start_city,end_city,train_no)
                                 -Passenger (passenger_id,full_name,age,contact_no,start_city,end_city)
                                 -Train (start_city,end_city,fare,train_no,total_seats)
@@ -22,11 +48,37 @@
 
 
                                 SERVICE
-                                -TrainService
-                                -TicketService
-                                -PassengerService
-                                -CancellationService,UpdateService,CommonService
+                                -TrainService :
+                                                save
+                                                saveTrain (using JPA)
 
-                                -TicketEnquiryService(ticket_no) , TrainEnquiryService (start_city,end_city),
-                                 PassengerEnquiryService(passenger_id)
+                                -TicketService :
+                                                save
+
+                                -PassengerService :
+                                                    save
+                                                    savePassenger (using JPA)
+
+                                -CancellationService :
+                                                        cancelTicket
+                                                        cancelPassenger
+                                                        deletePassenger (using JPA)
+                                -UpdateService :
+                                                        updatePassenger
+                                                        updateTrain
+                                -CommonService :
+                                                        create
+                                                        createPassengerJpa (using JPA)
+
+
+                                -TicketEnquiryService(using ticket_no):
+                                                                        ticketDetails
+
+                                -TrainEnquiryService (using start_city,end_city) :
+                                                                                    trainDetails
+                                                                                    getTrainById (using JPA)
+
+                                -PassengerEnquiryService( using passenger_id) :
+                                                                                    passengerDetails
+                                                                                    getPassengerByID
 

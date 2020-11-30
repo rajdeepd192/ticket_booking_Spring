@@ -1,15 +1,22 @@
 package com.areteans.ticketbooking.service;
 
 import com.areteans.ticketbooking.models.PassengerJPA;
+import com.areteans.ticketbooking.models.Passengers;
 import com.areteans.ticketbooking.models.Ticket;
 import com.areteans.ticketbooking.repository.PassengerRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import javax.transaction.Transactional;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import org.springframework.web.client.RestTemplate;
 
 @Service
 @RequiredArgsConstructor
@@ -61,5 +68,6 @@ public class CommonService {
 
     }
 
+   
 }
 
